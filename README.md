@@ -1,69 +1,84 @@
-🎥 DL Streamer Flask Web App
-============================
+# DL Streamer Flask Web App
 
-A lightweight Flask web application that uses Intel® DL Streamer to detect and classify people in uploaded videos. 
-It outputs an annotated video and a `meta.json` file containing per-frame classification metadata.
+A lightweight Flask web application using Intel DL Streamer and OpenVINO Toolkit to perform real-time person detection and attribute classification on uploaded videos.
 
-📦 Features
------------
-- Upload your own video file via browser
-- Perform:
-  - Person detection (`person-detection-0200`)
-  - Attribute classification (`person-attributes-recognition-crossroad-0234`)
-- Get:
-  - Annotated `output.mp4` with overlays
-  - Structured `meta.json` with labels, confidence, and timestamps
-- Built with:
-  - Flask
-  - Intel® DL Streamer (OpenVINO backend)
-  - GStreamer
+It outputs:
+- Annotated video (`output.mp4`) with visual overlays
+- Frame-wise metadata (`meta.json`) with labels, confidence scores, and attributes
 
-🧠 Models Used
---------------
-Task           | Model Name                                  | Framework
----------------|----------------------------------------------|-------------------
-Detection      | person-detection-0200                        | OpenVINO IR (FP16)
-Classification | person-attributes-recognition-crossroad-0234| OpenVINO IR (FP16)
+---
 
-Place all `.xml` and `.bin` model files inside the `models/` directory.
+## Features
 
-📁 Project Structure
---------------------
+- Upload videos directly via browser
+- Uses Intel pre-trained models to:
+  - Detect people (`person-detection-0200`)
+  - Classify attributes (`person-attributes-recognition-crossroad-0234`)
+- Downloadable results:
+  - `output.mp4` with bounding boxes and labels
+  - `meta.json` with per-frame detections
+
+---
+
+## Models Used
+
+| Task           | Model Name                                     | Format             |
+|----------------|------------------------------------------------|--------------------|
+| Detection      | person-detection-0200                          | OpenVINO IR (FP16) |
+| Classification | person-attributes-recognition-crossroad-0234  | OpenVINO IR (FP16) |
+
+> Place all model `.xml` and `.bin` files in the `models/` folder.
+
+---
+
+## Project Structure
+
+```text
 dlstreamer-webapp/
-├── app.py                    # Flask application
-├── requirements.txt          # Python dependencies
-├── models/                   # OpenVINO IR models
-│   ├── person-detection-0200.xml
-│   ├── person-detection-0200.bin
-│   ├── person-attributes-recognition-crossroad-0234.xml
-│   └── person-attributes-recognition-crossroad-0234.bin
-├── static/                   # Output folder (auto-generated)
+├── app.py                        # Flask backend
+├── requirements.txt              # Python dependencies
+├── models/                       # OpenVINO models
+│   ├── person-detection-0200.{xml, bin}
+│   └── person-attributes-recognition-crossroad-0234.{xml, bin}
+├── static/                       # Generated output
 │   ├── output.mp4
 │   └── meta.json
-├── uploads/                  # Uploaded videos (auto-generated)
+├── uploads/                      # Uploaded video files
 ├── templates/
-│   └── index.html            # Upload form HTML
-└── README.txt                # You're reading it
+│   └── index.html                # Upload page
+└── README.md                     # Project documentation
+```
 
-🚀 Getting Started
-------------------
-1. Install dependencies:
-   pip install -r requirements.txt
+---
 
-2. Run the app:
-   python3 app.py
+## Getting Started
 
-Then visit: http://localhost:5000
+```bash
+# Install dependencies
+pip install -r requirements.txt
 
-🐳 Optional: Docker Support
----------------------------
-If using Intel’s DL Streamer Docker image:
+# Run the Flask app
+python3 app.py
+```
 
+Then open: [http://localhost:5000](http://localhost:5000)
+
+---
+
+## Docker Support (Optional)
+
+Using Intel DL Streamer Docker image:
+
+```bash
 docker run -it -v $PWD:/workspace -p 5000:5000 intel/dlstreamer:2025.0.1.2-ubuntu22
 cd /workspace && python3 app.py
+```
 
-📝 Metadata Example (meta.json)
--------------------------------
+---
+
+## Sample Metadata (`meta.json`)
+
+```json
 [
   {
     "frame_id": 42,
@@ -79,15 +94,34 @@ cd /workspace && python3 app.py
     ]
   }
 ]
+```
 
-🧪 Benchmarking
-----------------
-Use benchmark_app inside the container:
+---
 
+## Benchmarking
+
+Run this inside the container or OpenVINO environment:
+
+```bash
 benchmark_app -m models/person-detection-0200.xml -d CPU -hint none -nireq 2 -nstreams 2
+```
 
-🙌 Credits
-----------
-- Intel® DL Streamer
-- OpenVINO™ Toolkit
-- Flask
+---
+
+## Acknowledgments
+
+- Intel DL Streamer
+- OpenVINO Toolkit
+- Flask Framework
+
+---
+
+## Sample Output
+
+```markdown
+![Annotated Video Output](static/sample_preview.jpg)
+```
+
+> Save a preview frame as `static/sample_preview.jpg` or update the path accordingly.
+
+---
