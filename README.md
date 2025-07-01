@@ -1,9 +1,10 @@
-DL Streamer Flask Web App
+🎥 DL Streamer Flask Web App
 ============================
 
-A lightweight Flask web application that uses Intel® DL Streamer to detect and classify people in uploaded videos. It outputs an annotated video and a `meta.json` file containing per-frame classification metadata.
+A lightweight Flask web application that uses Intel® DL Streamer to detect and classify people in uploaded videos. 
+It outputs an annotated video and a `meta.json` file containing per-frame classification metadata.
 
- Features
+📦 Features
 -----------
 - Upload your own video file via browser
 - Perform:
@@ -17,23 +18,25 @@ A lightweight Flask web application that uses Intel® DL Streamer to detect and 
   - Intel® DL Streamer (OpenVINO backend)
   - GStreamer
 
- Models Used
+🧠 Models Used
 --------------
-| Task            | Model Name                                  | Framework         |
-|-----------------|----------------------------------------------|-------------------|
-| Detection       | person-detection-0200                        | OpenVINO IR (FP16)|
-| Classification  | person-attributes-recognition-crossroad-0234| OpenVINO IR (FP16)|
+Task           | Model Name                                  | Framework
+---------------|----------------------------------------------|-------------------
+Detection      | person-detection-0200                        | OpenVINO IR (FP16)
+Classification | person-attributes-recognition-crossroad-0234| OpenVINO IR (FP16)
 
-Ensure the .xml and .bin files for each model are placed in the `models/` directory.
+Place all `.xml` and `.bin` model files inside the `models/` directory.
 
- Project Structure
+📁 Project Structure
 --------------------
 dlstreamer-webapp/
 ├── app.py                    # Flask application
 ├── requirements.txt          # Python dependencies
 ├── models/                   # OpenVINO IR models
 │   ├── person-detection-0200.xml
-│   └── person-attributes-recognition-crossroad-0234.xml
+│   ├── person-detection-0200.bin
+│   ├── person-attributes-recognition-crossroad-0234.xml
+│   └── person-attributes-recognition-crossroad-0234.bin
 ├── static/                   # Output folder (auto-generated)
 │   ├── output.mp4
 │   └── meta.json
@@ -42,7 +45,7 @@ dlstreamer-webapp/
 │   └── index.html            # Upload form HTML
 └── README.txt                # You're reading it
 
- Getting Started
+🚀 Getting Started
 ------------------
 1. Install dependencies:
    pip install -r requirements.txt
@@ -50,15 +53,16 @@ dlstreamer-webapp/
 2. Run the app:
    python3 app.py
 
-Then visit http://localhost:5000
+Then visit: http://localhost:5000
 
- Optional: Docker Support
+🐳 Optional: Docker Support
 ---------------------------
 If using Intel’s DL Streamer Docker image:
+
 docker run -it -v $PWD:/workspace -p 5000:5000 intel/dlstreamer:2025.0.1.2-ubuntu22
 cd /workspace && python3 app.py
 
- Metadata Example (meta.json)
+📝 Metadata Example (meta.json)
 -------------------------------
 [
   {
@@ -76,14 +80,14 @@ cd /workspace && python3 app.py
   }
 ]
 
- Benchmarking
+🧪 Benchmarking
 ----------------
 Use benchmark_app inside the container:
+
 benchmark_app -m models/person-detection-0200.xml -d CPU -hint none -nireq 2 -nstreams 2
 
- Credits
+🙌 Credits
 ----------
 - Intel® DL Streamer
 - OpenVINO™ Toolkit
 - Flask
-
