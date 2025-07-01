@@ -1,0 +1,10 @@
+
+[ INFO ] Execution Devices:['CPU']
+[ INFO ] Count:            3816 iterations
+[ INFO ] Duration:         60039.21 ms
+[ INFO ] Latency:
+[ INFO ]    Median:        28.99 ms
+[ INFO ]    Average:       31.36 ms
+[ INFO ]    Min:           22.68 ms
+[ INFO ]    Max:           73.99 ms
+[ INFO ] Throughput:   63.56 FPS

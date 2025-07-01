@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DL Streamer Inference App</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #E0E0E0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #BB86FC;
+    }
+
+    form {
+      margin-top: 30px;
+      background-color: #1E1E1E;
+      padding: 20px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    input[type="file"] {
+      background-color: #2A2A2A;
+      color: #E0E0E0;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      margin-right: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #BB86FC;
+      color: #121212;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #9E6BFA;
+    }
+
+    video {
+      margin-top: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(187, 134, 252, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <h1>DL Streamer Inference</h1>
+  <form method="POST" enctype="multipart/form-data">
+    <input type="file" name="video" accept="video/*" required>
+    <input type="submit" value="Upload & Run">
+  </form>
+
+  {% if processed %}
+    <video width="720" controls>
+      <source src="{{ url_for('output') }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  {% endif %}
+</body>
+</html>

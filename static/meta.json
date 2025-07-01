@@ -1,0 +1,1 @@
+[{"objects":[{"detection":{"bounding_box":{"x_max":0.7367358207702637,"x_min":0.6058839559555054,"y_max":0.8977562189102173,"y_min":0.37538957595825195},"confidence":0.9999151229858398,"label_id":0},"h":226,"region_id":244,"w":100,"x":465,"y":162}],"resolution":{"height":432,"width":768},"timestamp":0}
