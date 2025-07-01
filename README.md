@@ -118,10 +118,4 @@ benchmark_app -m models/person-detection-0200.xml -d CPU -hint none -nireq 2 -ns
 
 ## Sample Output
 
-```markdown
-```![Screenshot from 2025-07-02 02-02-48](https://github.com/user-attachments/assets/5db71420-7a57-42ca-9b8e-53f2cba3f30d)
-
-
-> Save a preview frame as `static/sample_preview.jpg` or update the path accordingly.
-
----
+![Screenshot from 2025-07-02 02-02-48](https://github.com/user-attachments/assets/22f52d2e-a885-40e1-966f-caf708a17f27)
