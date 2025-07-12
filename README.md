@@ -119,4 +119,4 @@ benchmark_app -m models/person-detection-0200.xml -d CPU -hint none -nireq 2 -ns
 
 ## Sample Output
 
-![Screenshot from 2025-07-02 02-02-48](https://github.com/user-attachments/assets/22f52d2e-a885-40e1-966f-caf708a17f27)
+<img width="609" height="431" alt="result" src="https://github.com/user-attachments/assets/e5c6ad93-b349-4069-abb7-cb188faf1c2d" />
