@@ -1,5 +1,6 @@
 # DL Streamer Flask Web App
-Demo Video:https://youtu.be/XXUsDnoPa54
+Demo Video: https://youtu.be/XXUsDnoPa54
+
 A lightweight Flask web application using Intel DL Streamer and OpenVINO Toolkit to perform real-time person detection and attribute classification on uploaded videos.
 
 It outputs:
